@@ -26,8 +26,8 @@ let currentImageNumberInt = parseInt(currentImageNumber);*/
 let fleche_gauche = document.getElementById("fleche_gauche");
 fleche_gauche.addEventListener("click", function () 
 	{
-	let activeDiv = document.querySelectorAll(".dots .dot_selected");
-	let currentImageNumberId=activeDiv[0].id
+	let activeDiv = document.querySelectorAll(".dots .dot_selected")
+	let currentImageNumberId= parseInt(activeDiv[0].id.replace("dot-", ""))
 	if (currentImageNumberId>0)
 		{
 		NewCurrentImageNumberId=currentImageNumberId-1
@@ -37,43 +37,43 @@ fleche_gauche.addEventListener("click", function ()
 		}
 	console.log(NewCurrentImageNumberId)
 
-	let RetirerDotSelected = document.getElementById(currentImageNumberId)
+	let RetirerDotSelected = document.getElementById("dot-"+currentImageNumberId)
 	console.log(RetirerDotSelected)
 	RetirerDotSelected.classList.remove("dot_selected")
-	let AjoutDotSelected = document.getElementById(NewCurrentImageNumberId)
+	let AjoutDotSelected = document.getElementById("dot-"+NewCurrentImageNumberId)
 	AjoutDotSelected.classList.add("dot_selected")
 	let ChangementImage = document.getElementById("banner-img")
 	console.log(ChangementImage)
 	ChangementImage.src = "./assets/images/slideshow/" + slides[NewCurrentImageNumberId].image
 	let changementCommentaires = document.querySelector("#paragraphe");
 	console.log(changementCommentaires)
-	changementCommentaires.textContent = slides[NewCurrentImageNumberId].tagLine
+	//changementCommentaires.textContent = slides[NewCurrentImageNumberId].tagLine
+	changementCommentaires.innerHTML= slides[NewCurrentImageNumberId].tagLine
 	}
 );
 
 let fleche_droite = document.getElementById("fleche_droite");
 fleche_droite.addEventListener("click", function () 
 {
-	let activeDiv = document.querySelectorAll(".dots .dot_selected");
-	let currentImageNumberId=activeDiv[0].id
-	if (currentImageNumberId>0)
+	let activeDiv = document.querySelectorAll(".dots .dot_selected")
+	let currentImageNumberId= parseInt(activeDiv[0].id.replace("dot-", ""))
+	if (currentImageNumberId<3)
 		{
-		NewCurrentImageNumberId=currentImageNumberId-1
+		NewCurrentImageNumberId=currentImageNumberId+1
 		}
 		else {
-		NewCurrentImageNumberId=3
+		NewCurrentImageNumberId=0
 		}
-	console.log(NewCurrentImageNumberId)
-
-	let RetirerDotSelected = document.getElementById(currentImageNumberId)
+	console.log(NewCurrentImageNumberId, currentImageNumberId)
+	let RetirerDotSelected = document.getElementById("dot-"+currentImageNumberId)
 	console.log(RetirerDotSelected)
 	RetirerDotSelected.classList.remove("dot_selected")
-	let AjoutDotSelected = document.getElementById(NewCurrentImageNumberId)
+	let AjoutDotSelected = document.getElementById("dot-"+NewCurrentImageNumberId)
 	AjoutDotSelected.classList.add("dot_selected")
 	let ChangementImage = document.getElementById("banner-img")
 	console.log(ChangementImage)
 	ChangementImage.src = "./assets/images/slideshow/" + slides[NewCurrentImageNumberId].image
 	let changementCommentaires = document.querySelector("#paragraphe");
 	console.log(changementCommentaires)
-	changementCommentaires.textContent = slides[NewCurrentImageNumberId].tagLine
+	changementCommentaires.innerHTML= slides[NewCurrentImageNumberId].tagLine
 });
