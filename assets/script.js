@@ -17,11 +17,6 @@ const slides = [
 	}
 ]
 
-/*let abcd = document.querySelectorAll(".dots dot_selected");
-console.log("Vous avez cliqué sur le bouton gauche");
-let currentImageNumberInt = parseInt(currentImageNumber);*/
-
-
 
 let fleche_gauche = document.getElementById("fleche_gauche");
 fleche_gauche.addEventListener("click", function () 
